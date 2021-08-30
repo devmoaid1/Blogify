@@ -1,11 +1,13 @@
 
+
 import './App.css';
 import LoginView from './Views/Sign in/LoginView';
-function App() {
+function App() { 
+ 
   return (
     <div className="App">
       hello this is blogify
-      <LoginView/>
+      <LoginView />
     </div>
   );
 }

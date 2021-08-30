@@ -1,9 +1,13 @@
-import React from 'react'
+import React,{FC} from 'react'
 
-function LoginView() {
+
+
+const LoginView:FC=()=> { 
+
     return (
         <div>
             <form>
+                          
                 <p>Email Address</p>
                 <input type="text" name="email" placeholder="Email Address"></input>
                 <p>Password</p>
