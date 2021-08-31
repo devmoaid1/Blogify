@@ -10,9 +10,9 @@ function App() {
  
   return (
     <div className="App"> 
-    <Router history={newHistory}>
+    
       <BaseRouter/> 
-      </Router>
+     
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React,{FC} from 'react'
 import { Text,FormControl,
     FormLabel, Box ,Input, Button} from "@chakra-ui/react"
 
-
+import { Link } from 'react-router-dom'
 const LoginView:FC=()=> { 
 
     return (
@@ -24,7 +24,7 @@ const LoginView:FC=()=> {
                      </FormControl>
                      
                         <Text  as="a" fontSize="15px" fontWeight="semibold" color="teal" cursor="pointer" mx={2} textAlign="right">Forget Password ?</Text>
-                        <Text   fontSize="15px" fontWeight="semibold" color="black" mt={3}  textAlign="left">Dont have an account yet? <Text as="a" cursor="pointer" color="teal" >Signup</Text></Text>
+                        <Text   fontSize="15px" fontWeight="semibold" color="black" mt={3}  textAlign="left">Dont have an account yet? <Text as="a" href="/signup/" cursor="pointer" color="teal" >Signup</Text></Text>
                       
                         
                         <Button width="100%"colorScheme="teal"mt={4} fontWeight="bold"  >
