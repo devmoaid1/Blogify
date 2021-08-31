@@ -6,8 +6,7 @@ const LoginView:FC=()=> {
 
     return (
         <div>
-            <form>
-                          
+            <form>         
                 <p>Email Address</p>
                 <input type="text" name="email" placeholder="Email Address"></input>
                 <p>Password</p>

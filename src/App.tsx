@@ -1,13 +1,18 @@
 
 
 import './App.css';
-import LoginView from './Views/Sign in/LoginView';
+import {Router} from 'react-router-dom'
+import BaseRouter from './route';
+import { createBrowserHistory } from 'history'
+
 function App() { 
+  const newHistory = createBrowserHistory();
  
   return (
-    <div className="App">
-      hello this is blogify
-      <LoginView />
+    <div className="App"> 
+    <Router history={newHistory}>
+      <BaseRouter/> 
+      </Router>
     </div>
   );
 }
