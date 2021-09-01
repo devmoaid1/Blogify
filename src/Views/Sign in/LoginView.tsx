@@ -1,10 +1,23 @@
-import React,{FC} from 'react'
+import React,{FC,useState} from 'react'
 import { Text,FormControl,
     FormLabel, Box ,Input, Button} from "@chakra-ui/react"
 
-import { Link } from 'react-router-dom'
+
 const LoginView:FC=()=> { 
 
+
+    const [email,setEmail]=useState<string>('')
+    const [password,setPassword]=useState<string>('')
+    
+    const handleSubmit=()=>{
+      
+         const loginData =new FormData()
+         loginData.append('email',email)
+         loginData.append('password',password) 
+
+         console.log(loginData.get('email'),loginData.get('password'))
+
+    }
     return (
         <>
             <Box d="flex" flexDirection="row" alignItems="center" alignContent="center"  bg="gray.100" width="100%" height="100vh">
@@ -15,19 +28,19 @@ const LoginView:FC=()=> {
 
                     <FormControl id="email" mt={3}>
                    <FormLabel fontSize="15px">Email address</FormLabel>
-                   <Input type="email" name="email" placeholder="Email Address"  />
+                   <Input type="email" name="email" onChange={(e)=>setEmail(e.target.value)} placeholder="Email Address"  />
                      </FormControl>
                      
                      <FormControl id="password" mt={3}>
                    <FormLabel fontSize="15px">Password</FormLabel>
-                   <Input type="password" name="password" placeholder="password"/>
+                   <Input type="password" name="password" onChange={(e)=>setPassword(e.target.value)} placeholder="password"/>
                      </FormControl>
                      
                         <Text  as="a" fontSize="15px" fontWeight="semibold" color="primary.100" cursor="pointer" mx={2} textAlign="right">Forget Password ?</Text>
                         <Text   fontSize="15px" fontWeight="semibold" color="black" mt={3}  textAlign="left">Dont have an account yet? <Text as="a" href="/signup/" cursor="pointer" color="primary.100" >Signup</Text></Text>
                       
                         
-                        <Button width="100%" color="white" bgColor="primary.100" mt={4} fontWeight="bold"  >
+                        <Button width="100%" onClick={handleSubmit} color="white" bgColor="primary.100" mt={4} fontWeight="bold"  >
                            Login
                         </Button>
                         

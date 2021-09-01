@@ -6,6 +6,22 @@ const Users=require('../models/user')
 app.use(express.json()) 
 
 
+
+
+
+// get all users 
+app.get('/users',async(req,res)=>{
+
+   try{
+        const blogs= await Users.find() 
+        res.json(blogs)
+   }catch(err){ 
+ 
+     res.status(500).json({massage:err.massage})
+ 
+   } 
+ 
+ }) 
 // Register a user 
 
 app.post('/register',async (req,res)=>{
