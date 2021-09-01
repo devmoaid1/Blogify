@@ -10,7 +10,7 @@ const LoginView:FC=()=> {
             <Box d="flex" flexDirection="row" alignItems="center" alignContent="center"  bg="gray.100" width="100%" height="100vh">
                <Box d="flex" p={4} mx="auto" flexDirection="column" bg="white" width="400px" height="500" boxShadow="md" borderRadius="3px">
                     
-                    <Text fontSize="40px" fontWeight="bold" fontStyle="italic" color="primary.100">Blogify</Text>
+                    <Text fontSize="40px" fontFamily="saira" fontWeight="bold"  color="primary.100">Blogify</Text>
                     <Text fontSize="25px" color="black" fontWeight="semibold" m={4}>Login</Text> 
 
                     <FormControl id="email" mt={3}>
