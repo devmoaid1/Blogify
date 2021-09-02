@@ -2,7 +2,7 @@ import React,{FC,useState} from 'react'
 import { Text,FormControl,
     FormLabel, Box ,Input, Button} from "@chakra-ui/react"
 
-
+import axios from 'axios'
 const LoginView:FC=()=> { 
 
 
@@ -11,11 +11,12 @@ const LoginView:FC=()=> {
     
     const handleSubmit=()=>{
       
-         const loginData =new FormData()
-         loginData.append('email',email)
-         loginData.append('password',password) 
-
-         console.log(loginData.get('email'),loginData.get('password'))
+         const loginData ={
+             email:email,
+             password:password
+         }
+         axios.post('http://localhost:8000/Auth/login',loginData).then(res=>console.log(res.data)).catch(err=>console.log(err))
+         console.log(email,password)
 
     }
     return (

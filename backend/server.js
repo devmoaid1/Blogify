@@ -6,7 +6,11 @@ const blogsRoutes=require("./controllers/BlogController")
 const AuthRoutes=require("./controllers/AuthController")
 require('dotenv').config()
 
-mongoose.connect(process.env.Mongo_URL,{useNewUrlParser:true}).then(()=>console.log("connected")).catch((err)=>console.error(err))
+mongoose.connect(process.env.Mongo_URL,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    
+  }).then(()=>console.log("connected")).catch((err)=>console.error(err))
 
 const db =mongoose.connection 
 db.on('error',(error)=>console.error(error) )
