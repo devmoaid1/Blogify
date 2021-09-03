@@ -4,18 +4,18 @@ import { Text,
      Box  ,Flex,Heading,Spacer,Image} from "@chakra-ui/react" 
 const HomeView:FC=()=> {
     return (
-        <Box as="div" height="100vh" bg="gray.100" position="relative">
+        <Box as="div" height="100vh" bg="#082032" position="relative">
               
               <Flex p="4" postion="absloute" top='0'>
-  <Box ml="4">
-    <Heading size="xl" fontFamily="saira" color="primary.100">Blogify</Heading>
+  <Box ml="14">
+    <Heading size="xl" fontFamily="saira" fontStyle="italic" color="primary.100">Blogify</Heading>
   </Box>
-  <Spacer />
-  <Box mr="10">
-    <Box as="a" cursor="pointer" color="primary.100" mr="4">
+  <Spacer/>
+  <Box mr="13">
+    <Box as="a" href="/Signup/" fontSize="20px" fontFamily="heading" cursor="pointer" color="primary.100" >
       Sign Up
     </Box>
-    <Box as="a" cursor="pointer" color="primary.100">Log in</Box>
+    <Box as="a" href="/Login/" fontSize="20px" fontFamily="heading" cursor="pointer" color="primary.100" m="3">Log in</Box>
   </Box>
 </Flex> 
 
@@ -23,10 +23,10 @@ const HomeView:FC=()=> {
                      <Image src={background} alt="background" />
              </Box>
 
-             <Text color="primary.100" position="absolute" fontSize="90px" fontFamily="saira" fontWeight="bold" left="100px" top="270px" >
+             <Text color="primary.100" position="absolute" fontSize="90px" fontFamily="saira" fontWeight="bold" left="80px" top="270px" >
                 Blogify...
              </Text> 
-             <Box as="div" maxWidth="360px" position="absolute" left="100px" top="390px">
+             <Box as="div" maxWidth="360px" position="absolute" left="80px" top="390px">
              <Text color="primary.100" textAlign="left" lineHeight="10" fontSize="30px" fontFamily="saira" fontWeight="semibold" left="100px" top="270px" >
                 The best platform to share blogs and articles with large community 
              </Text> 
