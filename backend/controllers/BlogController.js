@@ -24,7 +24,11 @@ routes.get('/',async(req,res)=>{
 routes.post('/',async(req,res)=>{
    const blog= new Blog({
        title:req.body.title,
-       content:req.body.content,
+       body:req.body.body,
+       created_At:req.body.created_At,
+       author:req.body.author,
+       likes:req.body.likes,
+       tags:req.body.tags
        
    })
 
@@ -41,6 +45,22 @@ routes.post('/',async(req,res)=>{
 
 })
 
+// delete single Blog 
+
+routes.delete('/:blogTitle',async(req,res)=>{
+
+  const title=req.params.blogTitle
+    try{ 
+
+       const deletedBlog=await Blog.deleteOne({title:title}) 
+       res.json(deletedBlog)
+
+    }catch(err){
+       res.status(400).json({massage:err})
+    }
+
+
+})
 
 
 module.exports=routes

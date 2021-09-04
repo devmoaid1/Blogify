@@ -2,6 +2,8 @@ import React,{FC} from 'react'
 import { StarIcon } from '@chakra-ui/icons'
 import { Text,
      Box  ,Flex,Heading,Spacer,Avatar,Wrap,WrapItem,Center, VStack,StackDivider,Link, Button } from "@chakra-ui/react" 
+
+
 const HomeView:FC=()=> {
     return (
          <Box display="flex"  bg="black" flexDirection="column"  height="100%"  >

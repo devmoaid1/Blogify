@@ -1,13 +1,8 @@
 const mongoose=require("mongoose") 
 
 
-const blogSchema=new mongoose.Schema({
+const commentSchema=new mongoose.Schema({
 
-    title:{
-        type:String,
-        required:true
-    }
-      ,
     body:{
         type:String,
         required:true
@@ -19,9 +14,12 @@ const blogSchema=new mongoose.Schema({
         default:Date.now
     }, 
     author:String,
-    likes:Number,
-    tags:[String]
+    blog:{
+        type:mongoose.Types.ObjectId,
+        ref:'blog',
+        required:true
+    }
 
 }) 
 
-module.exports=mongoose.model('blog',blogSchema)
+module.exports=mongoose.model('comment',commentSchema)
