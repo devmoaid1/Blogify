@@ -1,9 +1,10 @@
 
 import { Route ,Router} from "react-router-dom"; 
 import { createBrowserHistory } from 'history'
-import HomeView  from "./Views/Home/HomeView"; 
+import LandingView  from "./Views/Landing page/LandingView"; 
 import LoginView from "./Views/Sign in/LoginView";
 import SignupView from "./Views/SignUp/SignupView";
+import HomeView from "./Views/Home/HomeView";
 
 
 const BaseRouter = () => {
@@ -11,9 +12,10 @@ const BaseRouter = () => {
   return(
     <div>
      <Router history={newHistory}>
-      <Route exact path="/" component={HomeView} />
+      <Route exact path="/" component={LandingView} />
       <Route exact path="/Login/" component={LoginView} />
-      <Route exact path="/Signup/" component={SignupView} />
+      <Route exact path="/Signup/" component={SignupView} /> 
+      <Route exact path="/home/" component={HomeView} />
       </Router>      
     </div>
   )
