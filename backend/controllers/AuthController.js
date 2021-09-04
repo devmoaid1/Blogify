@@ -1,12 +1,12 @@
-const express=require('express') 
+import express from 'express' 
+import bcrypt from'bcrypt' 
+import jwt from'jsonwebtoken'
+import Users from'../models/user'
 const app=express()
-const bcrypt=require('bcrypt') 
-const jwt=require('jsonwebtoken')
-const Users=require('../models/user')
-app.use(express.json()) 
 
 const TOKEN_SECRET="sdsdfwdfwjdnjnyhybshd6678939734$5^%#@$##$wewerew"
 
+app.use(express.json()) 
 
 
 // get all users 

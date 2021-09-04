@@ -1,15 +1,15 @@
-const express=require('express') 
-const routes=express()
-const Comment=require('../models/comment') 
+import express from 'express'
+import  Comment from '../models/comment' 
 
+const routes=express()
 
 
 //get all comments for a specific blog   
 
-routes.get('/:blogTitle',async(req,res)=>{
+routes.get('/:blogID',async(req,res)=>{
 
 
-     const blog=req.params.blogTitle
+     const blog=req.params.blogID
   try{
        const comments= await Comment.find({blog:blog})
        res.json(comments)
@@ -27,7 +27,6 @@ routes.post('/',async(req,res)=>{
    const comment= new Comment({
        
        body:req.body.body,
-       
        author:req.body.author,
        blog:req.body.blog
        
@@ -65,4 +64,4 @@ routes.delete('/:commentId',async(req,res)=>{
 })
 
 
-module.exports=routes
+export default routes

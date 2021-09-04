@@ -1,12 +1,12 @@
-const express=require('express') 
-const routes=express()
-const Blog=require('../models/blog') 
+import express from 'express'
+import  Blog from'../models/blog' 
 
+const router=express.Router()
 
 
 //get all blogs 
 
-routes.get('/',async(req,res)=>{
+router.routes.get('/',async(req,res)=>{
 
   try{
        const blogs= await Blog.find() 
@@ -21,7 +21,7 @@ routes.get('/',async(req,res)=>{
 
 // add a new blog 
 
-routes.post('/',async(req,res)=>{
+router.routes.post('/',async(req,res)=>{
    const blog= new Blog({
        title:req.body.title,
        body:req.body.body,
@@ -47,7 +47,7 @@ routes.post('/',async(req,res)=>{
 
 // delete single Blog 
 
-routes.delete('/:blogTitle',async(req,res)=>{
+router.routes.delete('/:blogTitle',async(req,res)=>{
 
   const title=req.params.blogTitle
     try{ 
@@ -63,4 +63,4 @@ routes.delete('/:blogTitle',async(req,res)=>{
 })
 
 
-module.exports=routes
+export default router

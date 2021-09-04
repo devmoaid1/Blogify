@@ -2,12 +2,13 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
+  "type": "module",
   "scripts": {
     "devStart": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Moaid Mohamed",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
