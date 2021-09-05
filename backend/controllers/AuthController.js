@@ -105,4 +105,4 @@ if(password.length<5){
 
 
 
-module.exports=app
+export default app

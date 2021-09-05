@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "start": "nodemon --es-module-specifier-resolution=node server.js"
   },
   "keywords": [],
   "author": "Moaid Mohamed",

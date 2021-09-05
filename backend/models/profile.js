@@ -1,25 +1,27 @@
 import mongoose from "mongoose" 
 
 
-const commentSchema=new mongoose.Schema({
+const profileSchema=new mongoose.Schema({
 
-    body:{
-        type:String,
-        required:true
-    },
-
-    created_At:{
-        type:Date,
-        required:true,
-        default:Date.now
-    }, 
-    author:String,
-    blog:{
+    bio:String, 
+    avatar:String,
+    email:String,
+    owner:{
         type:mongoose.Types.ObjectId,
-        ref:'blog',
-        required:true
-    }
-
+        ref:'users',
+        required:true,
+        unique:true
+    },
+    followed:{
+        type:Boolean,
+        default:false
+    },
+    followers:[{type:mongoose.Types.ObjectId,
+    ref:'users',
+                
+     }]
+    
+    
 }) 
 
-export default mongoose.model('comment',commentSchema)
+export default mongoose.model('profile',profileSchema)

@@ -1,9 +1,10 @@
 import express from 'express' 
 import mongoose from 'mongoose' 
 import dotenv from 'dotenv'
-import blogs from './controllers/BlogController.';
-// import authRoutes from "./controllers/AuthController" 
-// import commentsRoutes from "./controllers/commentController" 
+import blogs from './controllers/BlogController';
+import auth from "./controllers/AuthController" 
+import comments from "./controllers/commentController"
+import Profiles from './controllers/profileController' 
 import cors from 'cors'
 
 const app=express() 
@@ -24,7 +25,8 @@ app.use(express.json())
 app.use(cors())
 
 app.use('/blogs', blogs)
-// app.use('/Auth',authRoutes)
-// app.use('/comments',commentsRoutes)
+app.use('/Auth',auth)
+app.use('/comments',comments)
+app.use('/profile',Profiles)
 
 app.listen(8000,()=>console.log("running on port 8000......."))

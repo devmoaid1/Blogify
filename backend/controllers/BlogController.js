@@ -6,7 +6,7 @@ const router=express.Router()
 
 //get all blogs 
 
-router.routes.get('/',async(req,res)=>{
+router.get('/',async(req,res)=>{
 
   try{
        const blogs= await Blog.find() 
@@ -21,7 +21,7 @@ router.routes.get('/',async(req,res)=>{
 
 // add a new blog 
 
-router.routes.post('/',async(req,res)=>{
+router.post('/',async(req,res)=>{
    const blog= new Blog({
        title:req.body.title,
        body:req.body.body,
@@ -47,7 +47,7 @@ router.routes.post('/',async(req,res)=>{
 
 // delete single Blog 
 
-router.routes.delete('/:blogTitle',async(req,res)=>{
+router.delete('/:blogTitle',async(req,res)=>{
 
   const title=req.params.blogTitle
     try{ 
