@@ -1,25 +1,19 @@
 import express from 'express' 
-import mongoose from 'mongoose' 
+ 
 import dotenv from 'dotenv'
-import blogs from './controllers/BlogController';
-import auth from "./controllers/AuthController" 
-import comments from "./controllers/commentController"
-import Profiles from './controllers/profileController' 
+import databaseConnection from './database'
+import blogs from './routes/blogRoutes'
+import auth from "./routes/userRoutes" 
+import comments from "./routes/commentsRoutes"
+import Profiles from './routes/profileRoutes' 
 import cors from 'cors'
 
 const app=express() 
 
 dotenv.config()
 
-mongoose.connect(process.env.Mongo_URL,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    
-  }).then(()=>console.log("connected")).catch((err)=>console.error(err))
+databaseConnection()
 
-const db =mongoose.connection 
-db.on('error',(error)=>console.error(error) )
-db.once('open',()=>console.log("connected to database..."))
 
 app.use(express.json())
 app.use(cors())

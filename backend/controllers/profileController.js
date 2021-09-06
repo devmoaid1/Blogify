@@ -1,12 +1,12 @@
-import express from 'express'
+
 import  Profile from '../models/profile' 
 
-const routes=express()
+
 
 
 //get profile`s user   
 
-routes.get('/:userID',async(req,res)=>{
+const getUserProfile=async(req,res)=>{
 
 
      const userId=req.params.userID
@@ -19,11 +19,15 @@ routes.get('/:userID',async(req,res)=>{
 
   } 
 
-})
+} 
 
 
 
-routes.get('/',async(req,res)=>{
+
+
+// get all profiles
+
+export const getAllProfiles=async(req,res)=>{
 
 
     
@@ -36,25 +40,19 @@ routes.get('/',async(req,res)=>{
 
  } 
 
-}) 
-
+}
 
 
 //create profile 
 
-
-routes.post('/',async(req,res)=>{
+export const createProfile=async(req,res)=>{
 
     const profile= new Profile({
        
         bio:req.body.bio,
-        email:req.body.email,
-        
+        username:req.body.username,
         owner:req.body.owner,
-        followers:req.body.followers
-        
-        
-        
+        followers:req.body.followers 
     })
  
     try{ 
@@ -67,25 +65,21 @@ routes.post('/',async(req,res)=>{
      res.status(400).json({massage:err.massage})
     }
 
-}) 
-
-
-
-
-
+}
 
 
 
 
 // update profile
 
-routes.patch('/:profileId',async(req,res)=>{
+export const updateProfile=async(req,res)=>{
    
    const id=req.params.profileId
    const bio=req.body.bio 
+   const username=req.body.username
    try{ 
 
-    const updatedProfile= await Profile.updateOne({_id:id},{$set:{bio:bio}}) 
+    const updatedProfile= await Profile.updateOne({_id:id},{$set:{bio:bio,username:username}}) 
     res.status(201).json(updatedProfile)
        
 
@@ -94,28 +88,19 @@ routes.patch('/:profileId',async(req,res)=>{
    }
 
 
-})
+}
 
 // follow user
-
-
-
-routes.patch('follow/:profileId',async(req,res)=>{
+export const followUser=async(req,res)=>{
    
     const id=req.params.profileId
-    const follower=req.body.follower 
-    try{ 
-       
-      const profile= await Profile.findOne({owner:id}) 
+    const newfollowers=req.body.followers 
 
-      const updatedFollowers= await profile.followers.push(follower)
+    console.log(typeof newfollowers)
+    try{ 
         
-      
-     
  
-     
- 
-     const updatedProfile= await Profile.findByIdAndUpdate(id,updatedFollowers) 
+     const updatedProfile= await Profile.updateOne({_id:id},{$set:{followers:newfollowers}})
      res.status(201).json(updatedProfile)
         
  
@@ -124,7 +109,7 @@ routes.patch('follow/:profileId',async(req,res)=>{
     }
  
  
- })
+ }
 
 
-export default routes
+export default getUserProfile

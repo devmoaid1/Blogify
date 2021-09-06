@@ -1,12 +1,12 @@
-import express from 'express'
+
 import  Blog from'../models/blog' 
 
-const router=express.Router()
+
 
 
 //get all blogs 
 
-router.get('/',async(req,res)=>{
+const getAllBlogs=async(req,res)=>{
 
   try{
        const blogs= await Blog.find() 
@@ -17,11 +17,11 @@ router.get('/',async(req,res)=>{
 
   } 
 
-}) 
+}
 
 // add a new blog 
 
-router.post('/',async(req,res)=>{
+export const createBlog=async(req,res)=>{
    const blog= new Blog({
        title:req.body.title,
        body:req.body.body,
@@ -43,11 +43,11 @@ router.post('/',async(req,res)=>{
    }
 
 
-})
+}
 
 // delete single Blog 
 
-router.delete('/:blogTitle',async(req,res)=>{
+export const deleteBlog=async(req,res)=>{
 
   const title=req.params.blogTitle
     try{ 
@@ -60,7 +60,7 @@ router.delete('/:blogTitle',async(req,res)=>{
     }
 
 
-})
+}
 
 
-export default router
+export default getAllBlogs

@@ -4,11 +4,10 @@ Content-Type: application/json
 
 
 {
-    "title":"first  blog",
-    "body":"blog content",
-    "created_At":"2021-09-08",
+    "title":"last blog",
+    "body":"blog content last",
     "author":"mamoaid",
-    "likes":4,
+    "likes":6,
     "tags":["technology","React js"]
     
 } 
@@ -25,9 +24,9 @@ POST http://localhost:8000/Auth/register HTTP/1.1
 Content-Type: application/json 
 
 {
-    "username":"mamoaidd",
-    "password":"momo123d",
-    "email":"moaidmohamed123d"
+    "username":"mamoaidd2",
+    "password":"momo123ddd",
+    "email":"moaidmohamed123d@gmail.com"
 } 
 
 
@@ -62,3 +61,23 @@ Content-Type: application/json
 
 ###
 
+PATCH http://localhost:8000/profile/follow/61340c3a1695ee7af25d2c94     HTTP/1.1 
+Content-Type: application/json 
+
+{   
+    "followers": [
+        "612fd3e0051c46b4113f3570",
+        "612fdc41ef634d7dcb7aadc3",
+        "61300cfa6c5e7229d9c4757e"
+    ]
+} 
+
+
+### 
+
+PATCH http://localhost:8000/profile/follow/61340c3a1695ee7af25d2c94     HTTP/1.1 
+Content-Type: application/json 
+
+{
+    "followers": "bio111"
+}

@@ -1,12 +1,11 @@
-import express from 'express'
+
 import  Comment from '../models/comment' 
 
-const routes=express()
 
 
 //get all comments for a specific blog   
 
-routes.get('/:blogID',async(req,res)=>{
+const getBlogComments=async(req,res)=>{
 
 
      const blog=req.params.blogID
@@ -19,11 +18,11 @@ routes.get('/:blogID',async(req,res)=>{
 
   } 
 
-}) 
+}
 
 // add a new comment
 
-routes.post('/',async(req,res)=>{
+export const addComment=async(req,res)=>{
    const comment= new Comment({
        
        body:req.body.body,
@@ -44,11 +43,10 @@ routes.post('/',async(req,res)=>{
    }
 
 
-})
+}
 
-// delete single Blog 
-
-routes.delete('/:commentId',async(req,res)=>{
+// delete single comment
+export const deleteComment =async(req,res)=>{
 
   const comment=req.params.commentId
     try{ 
@@ -61,7 +59,7 @@ routes.delete('/:commentId',async(req,res)=>{
     }
 
 
-})
+}
 
 
-export default routes
+export default getBlogComments

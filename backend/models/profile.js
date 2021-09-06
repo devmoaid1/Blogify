@@ -5,7 +5,7 @@ const profileSchema=new mongoose.Schema({
 
     bio:String, 
     avatar:String,
-    email:String,
+    username:String,
     owner:{
         type:mongoose.Types.ObjectId,
         ref:'users',
@@ -16,8 +16,8 @@ const profileSchema=new mongoose.Schema({
         type:Boolean,
         default:false
     },
-    followers:[{type:mongoose.Types.ObjectId,
-    ref:'users',
+    followers:[{type:String,
+         
                 
      }]
     
