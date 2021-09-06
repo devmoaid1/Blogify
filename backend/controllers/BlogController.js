@@ -60,6 +60,40 @@ export const deleteBlog=async(req,res)=>{
     }
 
 
+} 
+
+
+// get blog by tag 
+
+export const getBlogsBytag= async(req,res)=>{
+
+      const tag=req.params.tagName 
+
+      try{
+           
+          const blogs=await Blog.find({tags:tag}) 
+
+          if(blogs.length===0){
+            res.json({massage:`there are no blogs with ${tag} tag`})
+          }else{
+
+            res.json(blogs)
+          }
+
+
+
+
+
+      }catch(err){
+
+        res.status(400).json({massage:err.massage})
+      }
+
+
+
+
+
+
 }
 
 
