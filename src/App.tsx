@@ -1,17 +1,20 @@
 
 
 import './App.css';
-import {Router} from 'react-router-dom'
-import BaseRouter from './route';
-import { createBrowserHistory } from 'history'
 
+import BaseRouter from './route';
+import configureStore from './Store';
+import { Provider } from 'react-redux';
 function App() { 
-  const newHistory = createBrowserHistory();
+  
+  const store=configureStore()
  
   return (
     <div className="App"> 
-    
+
+    <Provider store={store}> 
       <BaseRouter/> 
+    </Provider>
      
     </div>
   );
