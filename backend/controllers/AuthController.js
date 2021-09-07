@@ -79,11 +79,11 @@ const getAllUsers=async(req,res)=>{
  
    if(!email || typeof email!=='string' || !email.includes('@')){
     res.status(400).json({massage:"Invalid Email"})
- } 
+   } 
  
  if(!password || typeof password!=='string'){
     res.status(400).json({massage:"Invalid password"})
- } 
+  } 
  
  
  if(password.length<5){

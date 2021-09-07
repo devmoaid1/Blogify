@@ -1,30 +1,40 @@
 import {FC,useState} from 'react'
+import {useDispatch,useSelector} from 'react-redux'
+import {useAppSelector,useAppDispatch} from '../../Hooks'
 import { Text,FormControl,
     FormLabel, Box ,Input, Button} from "@chakra-ui/react" 
     import { Link } from 'react-router-dom'
-import axios from 'axios'
+import axios from 'axios' 
+import { signUp } from '../../actions/users' 
+import { UserCreation } from '../../reducers/userReducer'
+import { RootState } from '../../App'
+import { AppState } from '../../reducers/RootReducer'
+
 const SignupView:FC=()=> { 
 
     const [email,setEmail]=useState<string>('')
     const [password,setPassword]=useState<string>('')
     const [username,setUsername]=useState<string>('')
 
+   const dispatch=useDispatch() 
+   
+   
+   const state=useSelector<RootState>((state)=>state.signUp) 
 
-    const handleRegister=()=>{
+   
+   const handleRegister=()=>{
        
-       const registerData= new FormData()
-
-       registerData.append('username',username)
-       registerData.append('password',password)
-       registerData.append('email',email) 
+       
         
       const data={
         username:username,
         password:password,
         email:email
       } 
-       axios.post('http://localhost:8000/Auth/register',data).then(res=>console.log("success")).catch(err=>console.log(err))
-       console.log(registerData.get('username'))
+       console.log(data)
+      dispatch(signUp(data)) 
+
+      console.log(state)
 
     }
     return (
@@ -34,7 +44,7 @@ const SignupView:FC=()=> {
                     
                     <Text fontSize="40px" fontWeight="bold"fontFamily="saira" color="primary.100">Blogify</Text>
                     <Text fontSize="25px" color="black" fontWeight="semibold" m={4}>SignUp</Text> 
-
+                     <Text>yyy</Text>
                     <FormControl id="email" mt={2}>
                    <FormLabel fontSize="15px">Email address</FormLabel>
                    <Input type="email" name="email" onChange={(e)=>setEmail(e.target.value)} placeholder="Email Address"  />
