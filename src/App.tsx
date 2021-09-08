@@ -3,7 +3,7 @@
 import './App.css';
 
 import BaseRouter from './route';
-import configureStore from './Store';
+import configureStore from './state/Store'
 import { Provider } from 'react-redux';
 
 

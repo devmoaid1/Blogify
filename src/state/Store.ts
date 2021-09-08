@@ -10,13 +10,13 @@ import {  routerMiddleware, } from "connected-react-router";
 
 
 
- const configureStore=(preloadedState:Object={})=>{ 
+ const configureStore=()=>{ 
 
    const history=createBrowserHistory()
    
    const middleware=[thunk,routerMiddleware(history)] 
 
-   const store=createStore(RootReducer(history),preloadedState,composeWithDevTools(applyMiddleware(...middleware))) 
+   const store=createStore(RootReducer,{},composeWithDevTools(applyMiddleware(...middleware))) 
 
 
      return store

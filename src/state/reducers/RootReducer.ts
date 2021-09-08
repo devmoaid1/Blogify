@@ -1,12 +1,10 @@
 import {combineReducers} from 'redux'; 
-import { connectRouter } from 'connected-react-router';
+// import { connectRouter } from 'connected-react-router';
 import { SignUpReducer } from './userReducer';
 
 
-const RootReducer=(history:any)=>
-
-    combineReducers({
-        router:connectRouter(history),
+const RootReducer=combineReducers({
+        
         signUp:SignUpReducer
     })
 

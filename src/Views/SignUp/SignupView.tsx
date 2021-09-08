@@ -1,41 +1,52 @@
 import {FC,useState} from 'react'
 import {useDispatch,useSelector} from 'react-redux'
-import {useAppSelector,useAppDispatch} from '../../Hooks'
+import {useAppSelector,useAppDispatch} from '../../state/Hooks'
 import { Text,FormControl,
-    FormLabel, Box ,Input, Button} from "@chakra-ui/react" 
+    FormLabel, Box ,Input, Button,useToast } from "@chakra-ui/react" 
     import { Link } from 'react-router-dom'
-import axios from 'axios' 
-import { signUp } from '../../actions/users' 
-import { UserCreation } from '../../reducers/userReducer'
+ 
+import { signUp } from '../../state/actions/users' 
+import { UserCreation } from '../../state/reducers/userReducer'
 import { RootState } from '../../App'
-import { AppState } from '../../reducers/RootReducer'
+import { AppState } from '../../state/reducers/RootReducer'
 
 const SignupView:FC=()=> { 
 
     const [email,setEmail]=useState<string>('')
     const [password,setPassword]=useState<string>('')
-    const [username,setUsername]=useState<string>('')
+    const [username,setUsername]=useState<string>('') 
+
+  
+    const toast=useToast()
 
    const dispatch=useDispatch() 
    
    
-   const state=useSelector<RootState>((state)=>state.signUp) 
+   const state=useSelector<RootState,UserCreation>((state)=>state.signUp) 
 
-   
+
+    
    const handleRegister=()=>{
-       
-       
         
       const data={
         username:username,
         password:password,
         email:email
       } 
-       console.log(data)
+       
       dispatch(signUp(data)) 
+    
+    }
 
-      console.log(state)
-
+    if( state.isSubmitted===true){
+      toast({
+        title:"Account Created",
+        description:`Account created for ${username}`,
+        duration:9000,
+        status:"success",
+        isClosable:true,
+        position:'top-right'
+      })
     }
     return (
         <>
@@ -44,7 +55,7 @@ const SignupView:FC=()=> {
                     
                     <Text fontSize="40px" fontWeight="bold"fontFamily="saira" color="primary.100">Blogify</Text>
                     <Text fontSize="25px" color="black" fontWeight="semibold" m={4}>SignUp</Text> 
-                     <Text>yyy</Text>
+                     <Text fontSize="20px" fontWeight="bold"fontFamily="saira" color="red">{state.error}</Text>
                     <FormControl id="email" mt={2}>
                    <FormLabel fontSize="15px">Email address</FormLabel>
                    <Input type="email" name="email" onChange={(e)=>setEmail(e.target.value)} placeholder="Email Address"  />
