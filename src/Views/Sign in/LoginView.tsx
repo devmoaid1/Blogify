@@ -1,13 +1,21 @@
 import React,{FC,useState} from 'react'
+import { useDispatch,useSelector } from 'react-redux'
+import { Redirect } from 'react-router-dom';
 import { Text,FormControl,
     FormLabel, Box ,Input, Button} from "@chakra-ui/react"
+import { RootState } from '../../App'
+import { LoginState } from '../../state/reducers/userReducer'
+import { login } from '../../state/actions/users'
 
-import axios from 'axios'
 const LoginView:FC=()=> { 
 
 
     const [email,setEmail]=useState<string>('')
-    const [password,setPassword]=useState<string>('')
+    const [password,setPassword]=useState<string>('') 
+
+    const dispatch=useDispatch()
+
+    const {error,token,isLogged,user}=useSelector<RootState,LoginState>((state)=>state.login)
     
     const handleSubmit=()=>{
       
@@ -15,8 +23,16 @@ const LoginView:FC=()=> {
              email:email,
              password:password
          }
-         axios.post('http://localhost:8000/Auth/login',loginData).then(res=>console.log(res.data)).catch(err=>console.log(err))
-         console.log(email,password)
+         console.log(isLogged)
+         dispatch(login(loginData))
+
+    } 
+
+   
+
+    if(isLogged===true){
+          
+         return <Redirect to="/home/"/>
 
     }
     return (
@@ -26,6 +42,8 @@ const LoginView:FC=()=> {
                     
                     <Text fontSize="40px" fontFamily="saira" fontWeight="bold"  color="primary.100">Blogify</Text>
                     <Text fontSize="25px" color="black" fontWeight="semibold" m={4}>Login</Text> 
+                    
+                    <Text fontSize="20px" fontWeight="bold"fontFamily="saira" color="red">{error}</Text>
 
                     <FormControl id="email" mt={3}>
                    <FormLabel fontSize="15px">Email address</FormLabel>

@@ -1,6 +1,6 @@
-import {CREATE_USER_ERROR,CREATE_USER_SUBMITTED,CREATE_USER_SUCCESS} from '../actionTypes/types'
-import { ActionTypes, SignUpAction } from '../actionTypes/SignUp'
 
+import { SignUpActionTypes, SignUpAction } from '../actionTypes/SignUp'
+import { LoginActionTypes,LoginActions } from '../actionTypes/Login'
 
 
 export interface UserCreation{
@@ -20,14 +20,14 @@ export const SignUpReducer=(state:UserCreation=signUpState,action:SignUpAction)=
     switch(action.type){
 
       
-      case ActionTypes.CREATE_USER_SUBMITTED: 
+      case SignUpActionTypes.CREATE_USER_SUBMITTED: 
       return{error:'',isSubmitted:true} 
 
-      case ActionTypes.CREATE_USER_ERROR: 
+      case SignUpActionTypes.CREATE_USER_ERROR: 
        return{isSubmitted:false,error:action.payload}
 
 
-       case ActionTypes.CREATE_USER_SUCCESS: 
+       case SignUpActionTypes.CREATE_USER_SUCCESS: 
           return{error:'',isSubmitted:true}
 
           default :
@@ -35,6 +35,56 @@ export const SignUpReducer=(state:UserCreation=signUpState,action:SignUpAction)=
 
 
     }
+
+} 
+
+
+export interface LoginState{
+  error:String,
+  token:String,
+  isLogged:Boolean,
+  user:{}
+} 
+
+
+const loginState:LoginState={
+  error:"",
+  token:"",
+  user:{},
+  isLogged:false
+}
+
+export const LoginReducer=(state:LoginState=loginState,action:LoginActions)=>{
+
+    switch(action.type){
+
+        case LoginActionTypes.LOGIN_SUCCESS:
+
+        return {user:{},error:"",token:action.payload,isLogged:true} 
+        
+        case LoginActionTypes.LOGIN_USER:
+
+          return {...state,user:action.payload,isLogged:true} 
+
+
+        case LoginActionTypes.LOGIN_ERROR: 
+
+        return{
+
+             error:action.payload, 
+             token:"",
+             isLogged:false,
+             user:{}
+        }
+
+        default: 
+        return state
+
+    }
+
+
+
+
 
 }
 

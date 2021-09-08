@@ -42,9 +42,16 @@ const getAllUsers=async(req,res)=>{
    const user=await Users.findOne({email:email}).lean() 
 
    if(!user){
-     return res.json({ status: 'error', error: 'Invalid username/password' })
+     return res.status(400).json({  error: 'Invalid email/password' })
    } 
+   
+   if(!email){
+      return res.status(400).json({  error: 'Email Required' })
+   }
 
+   if(!password){
+      return res.status(400).json({  error: 'Password Required' })
+   }
 
    if(await bcrypt.compare(password,user.password)){
        
@@ -59,7 +66,7 @@ const getAllUsers=async(req,res)=>{
 
    }else{
 
-      res.json({ status: 'error', error: 'Invalid username/password' })
+      res.status(400).json({  massage: 'Invalid email/password' })
    }
    
 

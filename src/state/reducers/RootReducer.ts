@@ -1,11 +1,12 @@
 import {combineReducers} from 'redux'; 
 // import { connectRouter } from 'connected-react-router';
-import { SignUpReducer } from './userReducer';
+import { SignUpReducer,LoginReducer } from './userReducer';
 
 
 const RootReducer=combineReducers({
         
-        signUp:SignUpReducer
+        signUp:SignUpReducer,
+        login:LoginReducer
     })
 
 

@@ -1,5 +1,5 @@
   
-export enum ActionTypes{ 
+export enum SignUpActionTypes{ 
 
     CREATE_USER_SUBMITTED="CREATE_USER_SUBMITTED",
     CREATE_USER_SUCCESS="CREATE_USER_SUCCESS",
@@ -10,16 +10,16 @@ export enum ActionTypes{
 
 
 interface CreateUserSubmit{
-    type:ActionTypes.CREATE_USER_SUBMITTED,
+    type:SignUpActionTypes.CREATE_USER_SUBMITTED,
     
 } 
 
 interface CreateUserSuccess{
-    type:ActionTypes.CREATE_USER_SUCCESS,
+    type:SignUpActionTypes.CREATE_USER_SUCCESS,
     
 }
 interface CreateUserError{
-    type:ActionTypes.CREATE_USER_ERROR,
+    type:SignUpActionTypes.CREATE_USER_ERROR,
     payload:String
 } 
 
