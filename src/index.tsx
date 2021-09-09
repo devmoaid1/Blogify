@@ -15,7 +15,7 @@ const theme = extendTheme({
     primary: {
       100: "#0ACFA0",
       // ...
-      900: "#1a202c",
+      900: "#0ACFA0",
     },
   },
 

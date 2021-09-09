@@ -15,7 +15,7 @@ const LoginView:FC=()=> {
 
     const dispatch=useDispatch()
 
-    const {error,token,isLogged,user}=useSelector<RootState,LoginState>((state)=>state.login)
+    const {error,isLogged}=useSelector<RootState,LoginState>((state)=>state.login)
     
     const handleSubmit=()=>{
       
@@ -35,6 +35,8 @@ const LoginView:FC=()=> {
          return <Redirect to="/home/"/>
 
     }
+
+
     return (
         <>
             <Box d="flex" flexDirection="row" alignItems="center" alignContent="center"   bg="black" width="100%" height="100vh">
@@ -59,7 +61,7 @@ const LoginView:FC=()=> {
                         <Text   fontSize="15px" fontWeight="semibold" color="black" mt={3}  textAlign="left">Dont have an account yet? <Text as="a" href="/signup/" cursor="pointer" color="primary.100" >Signup</Text></Text>
                       
                         
-                        <Button width="100%" onClick={handleSubmit} color="white" bgColor="primary.100" mt={4} fontWeight="bold"  >
+                        <Button width="100%" onClick={handleSubmit}  color="white" bgColor="primary.100" mt={4} fontWeight="bold"  >
                            Login
                         </Button>
                         
