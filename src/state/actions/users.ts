@@ -58,4 +58,15 @@ export const login=(user:Login)=>(dispatch:Dispatch<LoginActions>)=>{
         
     ) 
 
+} 
+
+
+export const getUser=(userId:String)=>(dispatch:Dispatch)=>{
+    
+      axios.get(`http://localhost:8000/profile/${userId}`)
+      .then(res=>dispatch({type:LoginActionTypes.LOGIN_USER,payload:res.data}))
+      .catch(err=>dispatch({type:LoginActionTypes.LOGIN_ERROR,payload:err.response.data.massage}))
+    
+
+
 }
