@@ -2,7 +2,7 @@ import axios from "axios";
 import {Dispatch} from 'redux'
 import { LoginActions, LoginActionTypes } from "../actionTypes/Login";
 import { SignUpActionTypes, SignUpAction } from "../actionTypes/SignUp";
-import { push } from "connected-react-router"
+
 
 // Sign up a user 
 interface User{
