@@ -39,7 +39,7 @@ export const signUp=(user:User)=>(dispatch:Dispatch<SignUpAction>)=>{
 
 export const login=(user:Login)=>(dispatch:Dispatch<LoginActions>)=>{
   
-    axios.post('http://localhost:8000/Auth/login',user,{withCredentials:true})
+    axios.post('http://localhost:8081/Auth/login',user,{withCredentials:true})
     .then(
         res=>{
 
@@ -61,13 +61,13 @@ export const login=(user:Login)=>(dispatch:Dispatch<LoginActions>)=>{
 } 
 
 
-export const logout=(dispatch:Dispatch<LoginActions>,dispatchFunc:Dispatch)=>{
+export const logout=(dispatch:Dispatch<LoginActions>)=>{
 
-   axios.get("http://localhost:8000/Auth/logout").then(res=>{
+   axios.get("http://localhost:8081/Auth/logout",{withCredentials:true}).then(res=>{
 
-         dispatch({type:LoginActionTypes.LOGOUT_SUCCESS,payload:res.data}) 
+         dispatch({type:LoginActionTypes.LOGOUT_SUCCESS,payload:res.data.massage}) 
 
-         dispatchFunc(push('/'))
+         
    }).catch(err=>dispatch({type:LoginActionTypes.LOGOUT_ERROR,payload:err.response.data.massage}))
   
 

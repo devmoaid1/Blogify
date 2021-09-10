@@ -3,9 +3,22 @@ import { StarIcon } from '@chakra-ui/icons'
 import { Text,
      Box  ,Flex,Heading,Avatar,Wrap,WrapItem,Center, VStack,StackDivider,Link, Button,Tab,TabList,TabPanels,TabPanel, Tabs } from "@chakra-ui/react" 
 import NavBar from '../../components/navBar'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../App'
+import { LoginState } from '../../state/reducers/userReducer'
+import { Redirect } from 'react-router'
 
 
-const HomeView:FC=()=> {
+const HomeView:FC=()=> { 
+
+
+     const {isLogged}=useSelector<RootState,LoginState>((state)=>state.login)
+
+     if(!isLogged){
+       return <Redirect to="/"/>
+     } 
+
+
     return (
          <Box display="flex"  bg="black" flexDirection="column"  height="100%"  >
 

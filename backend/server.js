@@ -23,4 +23,4 @@ app.use('/Auth',auth)
 app.use('/comments',comments)
 app.use('/profile',Profiles)
 
-app.listen(5000,()=>console.log("running on port 5000......."))
+app.listen(8081,()=>console.log("running on port 8081......."))

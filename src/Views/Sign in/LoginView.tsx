@@ -17,7 +17,7 @@ const LoginView:FC=()=> {
 
     const {error,isLogged}=useSelector<RootState,LoginState>((state)=>state.login)
     
-    const handleSubmit=()=>{
+    const handleLogin=()=>{
       
          const loginData ={
              email:email,
@@ -61,7 +61,7 @@ const LoginView:FC=()=> {
                         <Text   fontSize="15px" fontWeight="semibold" color="black" mt={3}  textAlign="left">Dont have an account yet? <Text as="a" href="/signup/" cursor="pointer" color="primary.100" >Signup</Text></Text>
                       
                         
-                        <Button width="100%" onClick={handleSubmit}  color="white" bgColor="primary.100" mt={4} fontWeight="bold"  >
+                        <Button width="100%" onClick={handleLogin}  color="white" bgColor="primary.100" mt={4} fontWeight="bold"  >
                            Login
                         </Button>
                         
