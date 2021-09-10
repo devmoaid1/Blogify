@@ -43,7 +43,8 @@ export interface LoginState{
   error:String,
   token:String,
   isLogged:Boolean,
-  user:{}
+  user:{},
+  massage:String
 } 
 
 
@@ -51,7 +52,8 @@ const loginState:LoginState={
   error:"",
   token:"",
   user:{},
-  isLogged:false
+  isLogged:false,
+  massage:""
 }
 
 export const LoginReducer=(state:LoginState=loginState,action:LoginActions)=>{
@@ -60,7 +62,7 @@ export const LoginReducer=(state:LoginState=loginState,action:LoginActions)=>{
 
         case LoginActionTypes.LOGIN_SUCCESS:
 
-        return {user:{},error:"",token:action.payload,isLogged:true} 
+        return {...state,error:"",token:action.payload,isLogged:true} 
         
         case LoginActionTypes.LOGIN_USER:
 
@@ -74,7 +76,27 @@ export const LoginReducer=(state:LoginState=loginState,action:LoginActions)=>{
              error:action.payload, 
              token:"",
              isLogged:false,
-             user:{}
+             user:{},
+             massage:""
+        } 
+
+        case LoginActionTypes.LOGOUT_SUCCESS: 
+        return{
+                massage:action.payload,
+                token:"",
+                isLogged:false,
+                user:{},
+                error:""
+        }
+          
+
+        case LoginActionTypes.LOGOUT_ERROR: 
+        return{
+                massage:"",
+                token:"",
+                isLogged:false,
+                user:{},
+                error:action.payload
         }
 
         default: 

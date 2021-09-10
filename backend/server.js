@@ -16,11 +16,11 @@ databaseConnection()
 
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({origin:true,credentials:true}))
 
 app.use('/blogs', blogs)
 app.use('/Auth',auth)
 app.use('/comments',comments)
 app.use('/profile',Profiles)
 
-app.listen(8000,()=>console.log("running on port 8000......."))
+app.listen(5000,()=>console.log("running on port 5000......."))

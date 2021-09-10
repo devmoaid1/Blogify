@@ -6,7 +6,7 @@ import Users from'../models/user'
 
 const TOKEN_SECRET="sdsdfwdfwjdnjnyhybshd6678939734$5^%#@$##$wewerew"
 
-
+const maxAge=1*24*60*60
 
 
 // get all users 
@@ -60,8 +60,14 @@ const getAllUsers=async(req,res)=>{
         email:user.email
      },
         
-        TOKEN_SECRET) 
-     res.json({status:'ok',data:token})
+        TOKEN_SECRET,{expiresIn:maxAge}) 
+        
+        
+        const options={
+         expires: new Date(Date.now() + 900000), httpOnly: true
+        }
+       
+        res.cookie('token',token,options).json({success:true,token,user})
 
 
    }else{
@@ -118,6 +124,20 @@ const getAllUsers=async(req,res)=>{
  
  
  
+ } 
+
+
+
+ export const logout=async(req,res)=>{
+
+   res.cookie("token", null, {
+      expires: new Date(Date.now()),
+      httpOnly: true,
+    });
+  
+     res.status(200).json({success:true,massage:"user looged out Successfully "});
+
+
  }
      
  export default getAllUsers

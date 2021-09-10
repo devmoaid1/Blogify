@@ -1,7 +1,8 @@
-import React,{FC} from 'react'
+import {FC} from 'react'
 import { StarIcon } from '@chakra-ui/icons'
 import { Text,
-     Box  ,Flex,Heading,Spacer,Avatar,Wrap,WrapItem,Center, VStack,StackDivider,Link, Button,Tab,TabList,TabPanels,TabPanel, Tabs } from "@chakra-ui/react" 
+     Box  ,Flex,Heading,Avatar,Wrap,WrapItem,Center, VStack,StackDivider,Link, Button,Tab,TabList,TabPanels,TabPanel, Tabs } from "@chakra-ui/react" 
+import NavBar from '../../components/navBar'
 
 
 const HomeView:FC=()=> {
@@ -10,18 +11,7 @@ const HomeView:FC=()=> {
 
 
 {/* NavBar */}
-<Flex p="4" h="100px">
-  <Box ml="14">
-    <Heading size="xl" fontFamily="saira" fontStyle="italic" color="primary.100">Blogify</Heading>
-  </Box>
-  <Spacer/>
-  <Box mr="13">
-    <Box as="a" href="/Signup/" fontSize="25px" fontFamily="heading" fontWeight="bold" cursor="pointer" color="primary.100" >
-      Home
-    </Box>
-    <Box as="a" href="/Login/" fontSize="25px" fontFamily="heading" fontWeight="bold" cursor="pointer" color="primary.100" m="3">Settings</Box>
-  </Box>
-</Flex>  
+                <NavBar/>
 
 
             

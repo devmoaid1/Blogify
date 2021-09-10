@@ -30,7 +30,17 @@ Content-Type: application/json
 } 
 
 
-### 
+###
+POST http://localhost:8000/Auth/login HTTP/1.1 
+Content-Type: application/json 
+
+{
+    "email":"momo123@gmail.com",
+    "password":"momo123456"
+    
+} 
+
+###
 
 GET http://localhost:8000/blogs  HTTP/1.1
 Content-Type: application/json 

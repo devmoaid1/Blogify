@@ -2,7 +2,8 @@ import axios from "axios";
 import {Dispatch} from 'redux'
 import { LoginActions, LoginActionTypes } from "../actionTypes/Login";
 import { SignUpActionTypes, SignUpAction } from "../actionTypes/SignUp";
-import jwt from 'jwt-decode'
+import { push } from "connected-react-router"
+
 // Sign up a user 
 interface User{
     username:String,
@@ -38,15 +39,14 @@ export const signUp=(user:User)=>(dispatch:Dispatch<SignUpAction>)=>{
 
 export const login=(user:Login)=>(dispatch:Dispatch<LoginActions>)=>{
   
-    axios.post('http://localhost:8000/Auth/login',user)
+    axios.post('http://localhost:8000/Auth/login',user,{withCredentials:true})
     .then(
         res=>{
 
-            const token=res.data.data 
-            const userData:{}=jwt(token)
-            dispatch({type:LoginActionTypes.LOGIN_USER,payload:userData}) 
+            const {token,user}=res.data
+            dispatch({type:LoginActionTypes.LOGIN_USER,payload:user}) 
             dispatch({type:LoginActionTypes.LOGIN_SUCCESS,payload:token}) 
-            localStorage.setItem('token',token) 
+           
 
 
 
@@ -61,12 +61,16 @@ export const login=(user:Login)=>(dispatch:Dispatch<LoginActions>)=>{
 } 
 
 
-export const getUser=(userId:String)=>(dispatch:Dispatch)=>{
-    
-      axios.get(`http://localhost:8000/profile/${userId}`)
-      .then(res=>dispatch({type:LoginActionTypes.LOGIN_USER,payload:res.data}))
-      .catch(err=>dispatch({type:LoginActionTypes.LOGIN_ERROR,payload:err.response.data.massage}))
-    
+export const logout=(dispatch:Dispatch<LoginActions>,dispatchFunc:Dispatch)=>{
+
+   axios.get("http://localhost:8000/Auth/logout").then(res=>{
+
+         dispatch({type:LoginActionTypes.LOGOUT_SUCCESS,payload:res.data}) 
+
+         dispatchFunc(push('/'))
+   }).catch(err=>dispatch({type:LoginActionTypes.LOGOUT_ERROR,payload:err.response.data.massage}))
+  
+
 
 
 }
