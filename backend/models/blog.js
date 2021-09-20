@@ -17,7 +17,12 @@ const blogSchema=new mongoose.Schema({
         required:true,
         default:Date.now
     }, 
-    author:String,
+    author:{
+        type:mongoose.Types.ObjectId,
+        ref:'users',
+        required:true,
+        unique:true
+    },
     likes:Number,
     tags:[String]
 

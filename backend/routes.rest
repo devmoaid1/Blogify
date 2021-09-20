@@ -4,9 +4,9 @@ Content-Type: application/json
 
 
 {
-    "title":"last blog",
+    "title":"3 blog",
     "body":"blog content last",
-    "author":"mamoaid",
+    "author":"612fe0fadf39c9f32796d5ad",
     "likes":6,
     "tags":["technology","React js"]
     
@@ -24,9 +24,9 @@ POST http://localhost:8000/Auth/register HTTP/1.1
 Content-Type: application/json 
 
 {
-    "username":"mamoaidd2",
-    "password":"momo123ddd",
-    "email":"moaidmohamed123d@gmail.com"
+    "username":"mamoaidd22",
+    "password":"momo123ddddd",
+    "email":"moaidmohamed123d4@gmail.com"
 } 
 
 
@@ -90,4 +90,6 @@ Content-Type: application/json
 
 {
     "followers": "bio111"
-}
+} 
+
+GET 

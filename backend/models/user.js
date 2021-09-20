@@ -2,7 +2,8 @@ import mongoose from 'mongoose'
 
 
 const userSchema=mongoose.Schema({
-
+    
+    avatar:String,
     username:{ 
         type:String,
         required:true,

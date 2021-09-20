@@ -1,4 +1,4 @@
-import axios from "axios"; 
+import axios from "../../axios"; 
 import {Dispatch} from 'redux'
 import { LoginActions, LoginActionTypes } from "../actionTypes/Login";
 import { SignUpActionTypes, SignUpAction } from "../actionTypes/SignUp";
@@ -21,7 +21,7 @@ interface Login{
 export const signUp=(user:User)=>(dispatch:Dispatch<SignUpAction>)=>{ 
    
     // dispatch({type:ActionTypes.CREATE_USER_SUBMITTED})
-    axios.post('http://localhost:8000/Auth/register',user).then(res=>{
+    axios.post('/Auth/register',user).then(res=>{
                   
         console.log(res.data)
     
@@ -39,7 +39,7 @@ export const signUp=(user:User)=>(dispatch:Dispatch<SignUpAction>)=>{
 
 export const login=(user:Login)=>(dispatch:Dispatch<LoginActions>)=>{
   
-    axios.post('http://localhost:8081/Auth/login',user,{withCredentials:true})
+    axios.post('/Auth/login',user,{withCredentials:true})
     .then(
         res=>{
 
@@ -63,7 +63,7 @@ export const login=(user:Login)=>(dispatch:Dispatch<LoginActions>)=>{
 
 export const logout=(dispatch:Dispatch<LoginActions>)=>{
 
-   axios.get("http://localhost:8081/Auth/logout",{withCredentials:true}).then(res=>{
+   axios.get("/Auth/logout",{withCredentials:true}).then(res=>{
 
          dispatch({type:LoginActionTypes.LOGOUT_SUCCESS,payload:res.data.massage}) 
 

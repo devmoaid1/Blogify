@@ -1,6 +1,6 @@
 
 import  Blog from'../models/blog' 
-
+import User from '../models/user'
 
 
 
@@ -8,9 +8,24 @@ import  Blog from'../models/blog'
 
 const getAllBlogs=async(req,res)=>{
 
-  try{
-       const blogs= await Blog.find() 
-       res.json(blogs)
+  try{ 
+       
+    const blogs= await Blog.find()
+    
+    const getAuthors=async()=>{
+      
+      const authors=[]
+      for(let i=0;i<blogs.length;i++){
+        const author= await User.findOne({_id:blogs[i].author}) 
+         authors.push(author) 
+      } 
+      return await Promise.all(authors) 
+
+    }
+      
+
+       
+    res.json({blogs:blogs,authors:getAuthors()})
   }catch(err){ 
 
     res.status(500).json({massage:err.massage})

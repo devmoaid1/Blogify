@@ -4,7 +4,7 @@ import mongoose from "mongoose"
 const profileSchema=new mongoose.Schema({
 
     bio:String, 
-    avatar:String,
+    
     username:String,
     owner:{
         type:mongoose.Types.ObjectId,
