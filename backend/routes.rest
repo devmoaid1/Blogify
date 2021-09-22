@@ -4,10 +4,10 @@ Content-Type: application/json
 
 
 {
-    "title":"3 blog",
+    "title":"4 blog",
     "body":"blog content last",
-    "author":"612fe0fadf39c9f32796d5ad",
-    "likes":6,
+    "author":"613820bf3106c351e615a83d",
+    "likes":7,
     "tags":["technology","React js"]
     
 } 

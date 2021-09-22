@@ -12,20 +12,13 @@ const getAllBlogs=async(req,res)=>{
        
     const blogs= await Blog.find()
     
-    const getAuthors=async()=>{
-      
-      const authors=[]
-      for(let i=0;i<blogs.length;i++){
-        const author= await User.findOne({_id:blogs[i].author}) 
-         authors.push(author) 
-      } 
-      return await Promise.all(authors) 
+    const authors_Ids=blogs.map((blog)=>{
+      return blog.author
+    }).slice(4,8) 
 
-    }
-      
 
-       
-    res.json({blogs:blogs,authors:getAuthors()})
+    const authors=await User.find({_id:authors_Ids}) 
+    res.json({blogs:blogs,authors:authors})
   }catch(err){ 
 
     res.status(500).json({massage:err.massage})
