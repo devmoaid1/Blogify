@@ -4,7 +4,7 @@ import jwt from'jsonwebtoken'
 import Users from'../models/user'
 
 
-const TOKEN_SECRET="sdsdfwdfwjdnjnyhybshd6678939734$5^%#@$##$wewerew"
+// const TOKEN_SECRET="sdsdfwdfwjdnjnyhybshd6678939734$5^%#@$##$wewerew"
 
 const maxAge=1*24*60*60
 
@@ -60,7 +60,7 @@ const getAllUsers=async(req,res)=>{
         email:user.email
      },
         
-        TOKEN_SECRET,{expiresIn:maxAge}) 
+        process.env.TOKEN_SECRET,{expiresIn:maxAge}) 
         
         
         const options={

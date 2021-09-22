@@ -7,7 +7,8 @@ import User from '../models/user'
 //get all blogs 
 
 const getAllBlogs=async(req,res)=>{
-
+  
+ 
   try{ 
        
     const blogs= await Blog.find()

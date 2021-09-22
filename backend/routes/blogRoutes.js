@@ -1,11 +1,12 @@
 import express from 'express' 
 import getAllBlogs,{deleteBlog,createBlog, getBlogsBytag} from '../controllers/BlogController'
+import { isAuthenticated } from '../middleware/auth'
 const route=express() 
 
 
 //get all blogs route 
 
-route.get('/',getAllBlogs) 
+route.get('/',isAuthenticated,getAllBlogs) 
 
 // get blogs by tag 
 

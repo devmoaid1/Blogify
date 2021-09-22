@@ -42,7 +42,8 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8000/blogs  HTTP/1.1
+GET http://localhost:8000/blogs  HTTP/1.1 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMzkxZTMxODIwNTU5MGYyODVmMWU0ZSIsImVtYWlsIjoibW9tbzEyM0BnbWFpbC5jb20iLCJpYXQiOjE2MzIyOTgzNzUsImV4cCI6MTYzMjM4NDc3NX0.Q3BQtoDlYlepUODuwu1AAYPrTJS_tyWc25ax9kVFW1I
 Content-Type: application/json 
 
 ###

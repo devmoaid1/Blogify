@@ -7,7 +7,7 @@ import auth from "./routes/userRoutes"
 import comments from "./routes/commentsRoutes"
 import Profiles from './routes/profileRoutes' 
 import cors from 'cors'
-
+import cookieParser from 'cookie-parser'
 const app=express() 
 
 dotenv.config()
@@ -16,7 +16,8 @@ databaseConnection()
 
 
 app.use(express.json())
-app.use(cors({origin:true,credentials:true}))
+app.use(cors({origin:true,credentials:true})) 
+app.use(cookieParser())
 
 app.use('/blogs', blogs)
 app.use('/Auth',auth)
